@@ -6,9 +6,17 @@
 /*   By: adubeau <marvin@42quebec.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 11:38:32 by adubeau           #+#    #+#             */
-/*   Updated: 2021/02/23 11:26:26 by adubeau          ###   ########.fr       */
+/*   Updated: 2021/02/23 14:29:27 by adubeau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int		ft_is_space(char c)
+{
+	if (c == '\f' || c == 32 || c == '\n' || c == '\r' ||
+			c == '\t' || c == '\v')
+		return (1);
+	return (0);
+}
 
 int		ft_atoi(char *str)
 {
@@ -19,8 +27,8 @@ int		ft_atoi(char *str)
 	i = 0;
 	res = 0;
 	neg = 1;
-	while (str[i] == '\f' || str[i] == 32 || str[i] == '\n' || str[i] == '\r' ||
-		str[i] == '\t' || str[i] == '\v' || (str[i] >= '0' && str[i] <= '9'))
+	while (ft_is_space(str[i]) || str[i] == '+' ||
+			str[i] == '-' || (str[i] >= '0' && str[i] <= '9'))
 	{
 		if (str[i] == '-')
 			neg = neg * -1;
